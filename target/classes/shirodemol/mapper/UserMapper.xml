@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="shirodemol.mapper.UserMapper">
+    <select id="loadAll" resultType="shirodemol.domain.User">
+        SELECT  * from t_user
+    </select>
+    <insert id="save" parameterType="shirodemol.domain.User">
+        INSERT INTO t_user(username,password) values(#{username},#{password})
+    </insert>
+    <select id="findByUserName" parameterType="string" resultType="shirodemol.domain.User">
+        SELECT id, username, password FROM t_user WHERE username = #{username}
+    </select>
+</mapper>

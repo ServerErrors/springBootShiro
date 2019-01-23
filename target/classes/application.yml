@@ -1,0 +1,13 @@
+server:
+  port: 5561
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=UTF-8
+    username: root
+    password: admin
+
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true

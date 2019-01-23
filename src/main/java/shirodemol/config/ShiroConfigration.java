@@ -43,7 +43,7 @@ public class ShiroConfigration {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String,String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<String, String>();
         //登录页面可以匿名访问
         map.put("/login.html", "anon");
         //登录处理也需要匿名访问
@@ -53,13 +53,14 @@ public class ShiroConfigration {
         //不需要权限的页面可以匿名访问
         map.put("/anon.html", "anon");
         //登出
-        map.put("/login/logout","logout");
+        map.put("/login/logout", "logout");
         //对应的url需要相关权限
-        //map.put("/user/save", "perms[user:save]");
+        map.put("/user/save", "perms[user:save]");
+        map.put("/user/findAll", "perms[user:findAll]");
         //对所有用户认证
-        map.put("/**","authc");
+        map.put("/**", "authc");
         //登录
-        shiroFilterFactoryBean.setLoginUrl("/login.html");
+        shiroFilterFactoryBean.setLoginUrl("/login/login");
         //首页
         shiroFilterFactoryBean.setSuccessUrl("/main.html");
         //错误页面，认证不通过跳转

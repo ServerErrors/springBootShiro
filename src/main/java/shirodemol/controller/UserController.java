@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+
 import shirodemol.domain.User;
 import shirodemol.service.IUserService;
 import shirodemol.utils.MD5Util;
@@ -21,7 +22,8 @@ public class UserController {
     public String index() {
         return "anon";
     }
-    @RequiresPermissions("save")
+
+    //    @RequiresPermissions("user:save")
     @RequestMapping("/save")
     @ResponseBody
     public String save() {
@@ -29,9 +31,10 @@ public class UserController {
         user.setUsername("admin");
         user.setPassword(MD5Util.getMD5Password("123"));
         userService.save(user);
-        return "保存用户成功";
+        return "success";
     }
 
+    //    @RequiresPermissions("user:findAll")
     @RequestMapping("/findAll")
     @ResponseBody
     public List<User> loadAll() {
